@@ -25,25 +25,25 @@
 Web на SERVER
 
 Инсталировать
-
+```
 # apt install inetutils-inetd
-
-Настроить конфиг
-
-# cat /etc/inetd.conf
+```
+Отредавтировать файл конфигурации
+```
+# nano /etc/inetd.conf
 
 www stream tcp nowait root /usr/local/sbin/webd webd
-
+```
 Запустить
-
+```
 # service inetutils-inetd restart
-
+```
 создание скрипта сервиса
-
+```
 # nano /usr/local/sbin/webd
-
+```
 вставить
-
+```
 #!/bin/bash
 base=/var/www
 #log=/var/log/webd.log
@@ -82,23 +82,25 @@ else
 #  ip=$(awk '/32 host/ { print f } {f=$2}' /proc/net/fib_trie | sort -u | grep -v 127.0.0.1)
 #  echo -e "Host: $(hostname), IP: $ip, ver 1.1"
 fi
-
+```
 выдать права
-
+```
 # chmod +x /usr/local/sbin/webd
-
+```
 
 Ресурсы Web сервера на shell
-
+```
 # mkdir /var/www
-
+```
+```
 # nano /var/www/index.html
-
+```
+```
 <html>
 <h1>Hello Student</h1>
 </html>
+```
 
-Проверка
 Проверка
 http://server
 
