@@ -1,24 +1,24 @@
 App Armor
 
 Установка
-
+```
 # apt install apparmor
 
 # aa-status
-
+```
 проверить профиля
-
+```
 # find /etc/apparmor.d/
-
+```
 посомтреть любой профиль профиль 
-
+```
 # nano /etc/apparmor.d/bin.man
-
+```
 
 Создание профиля "вручную"
 
 проверить библиотеки приложения
-
+```
 # ldd /bin/bash
 
 # ldd /bin/cat
@@ -26,11 +26,12 @@ App Armor
 # ldd /usr/bin/file
 
 # man file
-
+```
 Созданеи профилья в ручную
-
+```
 # nano /etc/apparmor.d/usr.local.sbin.webd
-
+```
+```
 /usr/local/sbin/webd {
 
   network inet stream,
@@ -52,11 +53,11 @@ App Armor
   /usr/lib/x86_64-linux-gnu/libmagic* mr,
 
 }
-
+```
 
 
 Включение/выключение профиля
-
+```
 # aa-complain /usr/local/sbin/webd
 
 # aa-status
@@ -69,12 +70,13 @@ App Armor
 
 # aa-disable /usr/local/sbin/webd
 
-
+```
 Создание профиля автоматически при помощи генерации
 
-
+```
 # aa-genprof 
-
+```
 просмотр созданного профиля.
-
+```
 # service apparmor restart
+```
