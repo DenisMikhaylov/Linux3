@@ -19,14 +19,81 @@
 ### **Практическая работа**
 
 ### **Задача 1: Импорт виртуальных машин**
+Импортировать 4 виртуальные машины debian
+### **Задача 2: Настройка виртуальных машин**
 
-В этой задаче вы произведете настройку окружения виртуализации для дальнейших практических работ.
-1. To open the Power BI Desktop, on the taskbar, click the Microsoft Power BI Desktop shortcut.
+Web на SERVER
 
-    ![Picture 8](Linked_image_Files/02-load-data-with-power-query-in-power-bi-desktop_image1.png)
+Инсталировать
+# apt install inetutils-inetd
+Настроить конфиг
+# cat /etc/inetd.conf
+www stream tcp nowait root /usr/local/sbin/webd webd
 
-1. To close the getting started window, at the top-left of the window, click **X**.
+Запустить
+# service inetutils-inetd restart
 
-    ![Picture 7](Linked_image_Files/02-load-data-with-power-query-in-power-bi-desktop_image2.png)
+создание скрипта сервиса
 
-1. To open the starter Power BI Desktop file, click the **File** ribbon tab to open the backstage view.
+# nano /usr/local/sbin/webd
+
+вставить
+
+#!/bin/bash
+base=/var/www
+#log=/var/log/webd.log
+
+read request
+##echo "$request" >> $log       # for educational demonstration
+
+filename="${request#GET }"
+filename="${filename% HTTP/*}"
+
+test $filename = "/" && filename="/index.html"
+
+filename="$base$filename"
+
+while :
+do
+  read -r header
+##  echo "$header" >> $log       # for educational demonstration
+  [ "$header" == $'\r' ] && break;
+##  [ "$header" == $'' ] && break;    # for STDIN/STDOUT educational demonstration
+done
+
+if [ -e "$filename" ]
+then
+#  echo `date` OK $filename on `hostname` >> $log
+  echo -e "HTTP/1.1 200 OK\r"
+  echo -e "Content-Type: $(/usr/bin/file -bi \"$filename\")\r"
+  echo -e "\r"
+  /bin/cat "$filename"
+else
+#  echo "$(date)" ERR $filename on "$(hostname)" >> $log
+  echo -e "HTTP/1.1 404 Not Found\r"
+  echo -e "Content-Type: text/html;\r"
+  echo -e "\r"
+  echo -e "<h1>File $filename Not Found</h1>"
+#  ip=$(awk '/32 host/ { print f } {f=$2}' /proc/net/fib_trie | sort -u | grep -v 127.0.0.1)
+#  echo -e "Host: $(hostname), IP: $ip, ver 1.1"
+fi
+
+выдать права
+
+# chmod +x /usr/local/sbin/webd
+
+
+Ресурсы Web сервера на shell
+
+# mkdir /var/www
+
+# nano /var/www/index.html
+
+<html>
+<h1>Hello Student</h1>
+</html>
+
+Проверка
+Проверка
+http://server
+
