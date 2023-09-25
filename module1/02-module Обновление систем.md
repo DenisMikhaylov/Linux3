@@ -2,7 +2,7 @@
 
 DPKG
 
-# less /var/lib/dpkg/status
+ # less /var/lib/dpkg/status
 
 Установленные пакеты
 
