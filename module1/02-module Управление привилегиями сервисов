@@ -2,6 +2,7 @@ POSIX ACL
 
 apt install acl
 
+Сценарий: с помощью POSIX ACL запрещаем пользователю user1 читать файл /etc/passwd
 
 # getfacl /etc/passwd
 
