@@ -25,12 +25,17 @@
 Web на SERVER
 
 Инсталировать
+
 # apt install inetutils-inetd
+
 Настроить конфиг
+
 # cat /etc/inetd.conf
+
 www stream tcp nowait root /usr/local/sbin/webd webd
 
 Запустить
+
 # service inetutils-inetd restart
 
 создание скрипта сервиса
