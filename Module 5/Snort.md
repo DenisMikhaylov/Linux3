@@ -10,10 +10,7 @@ server # apt install snort
 ```
 ...
 DEBIAN_SNORT_INTERFACE="eth2"
-#DEBIAN_SNORT_INTERFACE="eth1"
-#DEBIAN_SNORT_INTERFACE="bond1"
 DEBIAN_SNORT_HOME_NET="192.168.0.0/16"
-#DEBIAN_SNORT_HOME_NET="any"
 ...
 ```
 
