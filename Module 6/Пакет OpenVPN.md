@@ -10,7 +10,7 @@ lan# scp /var/www/html/ca.crl gate:
 Создание сертификата сервиса, подписанного CA для gate
 ```
 gate# openssl genrsa -out gate.key 2048
-gate# chmod 400 www.key
+gate# chmod 400 gate.key
 ```
 Создание запроса на сертификат
 ```
