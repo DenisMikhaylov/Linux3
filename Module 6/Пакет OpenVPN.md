@@ -117,7 +117,7 @@ dev tun
 # port 1194
 # proto udp
 client
-remote 172.16.1.X
+remote <ip address gate ext>
 ca ca.crt
 cert user1.crt
 key user1.key
