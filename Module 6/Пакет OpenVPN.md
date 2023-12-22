@@ -75,8 +75,8 @@ dev tun
 # port 1194
 # proto udp
 keepalive 10 120
-server 192.168.200+X.0 255.255.255.0
-push "route 192.168.100+X.0 255.255.255.0"
+server 192.168.200.0 255.255.255.0
+push "route 192.168.110.0 255.255.255.0"
 
 #push "dhcp-option DNS 192.168.X.10"
 #push "block-outside-dns"
