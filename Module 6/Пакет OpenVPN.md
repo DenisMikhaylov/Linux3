@@ -57,7 +57,9 @@ gate# openssl verify -CAfile ca.crt gate.crt
 ```
 gate# apt install openvpn
 ```
-Создание DH для более сложного шифрования
+
+Генерация файла Диффи-Хелмана
+Создайте ключи Диффи-Хелмана следующей командой:
 ```
 # time openssl dhparam -out /etc/openvpn/dh2048.pem 2048
 ```
