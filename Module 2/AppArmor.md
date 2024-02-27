@@ -12,7 +12,7 @@ App Armor
 ```
 посомтреть любой профиль профиль 
 ```
-# nano /etc/apparmor.d/bin.man
+# nano /etc/apparmor.d/usr.bin.man
 ```
 
 Создание профиля "вручную"
