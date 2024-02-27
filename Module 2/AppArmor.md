@@ -2,7 +2,7 @@ App Armor
 
 Установка
 ```
-# apt install apparmor
+# apt install apparmor*
 
 # aa-status
 ```
